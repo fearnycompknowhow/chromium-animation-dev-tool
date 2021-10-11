@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chromium Animation Dev Tools</title>
+
+	<style>
+		#app {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100vw;
+			height: 100vh;
+		}
+
+		.container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 10px;
+			border-radius: 10px;
+			cursor: pointer;
+			border-width: 3px;
+			border-style: solid;
+			margin: 1rem;
+
+			animation: 4s fade-in-background, 6s fade-out-border;
+			animation-fill-mode: forwards;
+		}
+
+		.logo {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-family: Avenir, Helvetica, Arial, sans-serif;
+			color: white;
+			font-size: 48px;
+			border: 3px white solid;
+			padding: 0;
+			line-height: 34px;
+			padding-left: 2px;
+			padding-top: 8px;
+			padding-bottom: 2px;
+
+			animation: 8s fade-in-text;
+			animation-fill-mode: forwards;
+		}
+
+		@keyframes fade-in-background {
+			0% {
+				background-color: #ffffff00;
+			}
+
+			100% {
+				background-color: #063267;
+			}
+		}
+
+		@keyframes fade-out-border {
+			0% {
+				border-color: #063267;
+			}
+
+			100% {
+				border-color: #ffffff00;
+			}
+		}
+
+		@keyframes fade-in-text {
+			0% {
+				color: #ffffff00;
+			}
+
+			100% {
+				color: #fff;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="container">
+			<div class="logo">ckh</div>
+		</div>
+	</div>
+
+	<script>
+		// Add in an additional element after a timeout so that a new Timeline frame will be created:
+		const container = document.querySelector('#app');
+
+		setTimeout(() => {
+			container.innerHTML += '<div class="container"><div class="logo">ckh</div></div>';
+		}, 5000);
+	</script>
+</body>
+</html>
